@@ -1,0 +1,11 @@
+{
+    "user": {
+        "mail": "",
+        "password": ""
+    },
+    "voucher": "",
+    "pushover": {
+        "appKey": "",
+        "userKey": ""
+    }
+}

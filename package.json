@@ -1,0 +1,41 @@
+{
+  "name": "moleculer-demo",
+  "version": "1.0.0",
+  "description": "My Moleculer microservices project",
+  "scripts": {
+    "dev": "moleculer-runner --repl --hot services",
+    "start": "moleculer-runner",
+    "ci": "jest --watch",
+    "test": "jest --coverage"
+  },
+  "keywords": [
+    "microservices",
+    "moleculer"
+  ],
+  "author": "",
+  "devDependencies": {
+    "jest": "^22.4.2",
+    "jest-cli": "^22.4.2",
+    "moleculer-repl": "^0.4.0"
+  },
+  "dependencies": {
+    "moleculer": "^0.12.0",
+    "moleculer-web": "^0.6.0",
+    "nats": "^0.8.2",
+    "node-deliveroo": "git+https://github.com/jzarca01/node-deliveroo.git",
+    "node-pushover": "^0.2.2",
+    "shelljs": "^0.8.2",
+    "shorthash": "0.0.2"
+  },
+  "engines": {
+    "node": ">= 6.x.x"
+  },
+  "jest": {
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node",
+    "rootDir": "./services",
+    "roots": [
+      "../test"
+    ]
+  }
+}
