@@ -1,33 +1,12 @@
 [![Moleculer](https://img.shields.io/badge/Powered%20by-Moleculer-green.svg?colorB=0e83cd)](https://moleculer.services)
 
-# moleculer-demo
+# My Moleculer setup
 
-## Build Setup
+## Prerequisites
 
-``` bash
-# Install dependencies
-npm install
-
-# Start developing with REPL
-npm run dev
-
-# Start production
-npm start
-
-# Run unit tests
-npm test
-
-# Run continuous test mode
-npm run ci
-
-# Run ESLint
-npm run lint
 ```
-
-## Run in Docker
-
-```bash
-$ docker-compose up -d --build
+docker run -p 4222:4222 -p 8222:8222 -p 6222:6222 --name gnatsd -ti nats:latest
+docker container restart gnatsd
 ```
 
 ## Raspberry Pi setup
@@ -59,3 +38,14 @@ Browser.defaultResolverSequence = [
 , rst.makeAddressesUnique()
 ];
 ```
+
+## How to run
+
+``` bash
+# Install dependencies
+npm install
+
+# Start developing with REPL
+npm run dev
+```
+
