@@ -11,7 +11,7 @@ module.exports = {
     //dependencies: [],
     actions: {
         off() {
-            shell.exec("node /home/pi/LILO/index.js --light 00");
+            shell.exec("node ~/LILO/index.js --light 00");
             return "Asking LILO to turn off the lights";
         },
         on: {
@@ -20,7 +20,7 @@ module.exports = {
             },
             handler(ctx) {
                 const timeFrame = ctx.params.weekend === 'true' ? "12,00,23,59" : "09,00,23,00";
-                console.log(`node /home/pi/LILO/index.js --time ${timeFrame}`);
+                shell.exec(`node ~/LILO/index.js --time ${timeFrame}`);
                 return `LILO Mode Weekend: ${ctx.params.weekend === 'true' ? "enabled" : "disabled"}`;
             }
         }
