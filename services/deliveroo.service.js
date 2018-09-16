@@ -36,8 +36,16 @@ module.exports = {
         return `Voucher updated ${this.settings.voucher}`;
       }
     },
-    track() {
-      return this.trackOrder(this.settings.email, this.settings.password);
+    track: {
+      params: {
+        email: 'string'
+      },
+      handler(ctx) {
+        if (ctx.params.email) {
+          this.setEmail(ctx.params.email)
+        }
+        return this.trackOrder(this.settings.email, this.settings.password);
+      }
     }
   },
   methods: {
@@ -49,7 +57,7 @@ module.exports = {
           return deliveroo.signUp(email, password);
         })
         .then(response =>
-          deliveroo.addVoucherToUser(response.user.id, this.settings.voucher)
+          deliveroo.addVoucherToUser(response.user.id, voucher)
         )
         .then(() => {
           this.broker.call('pushover.send', {
@@ -76,6 +84,10 @@ module.exports = {
     trackOrder(mail, password) {
       deliveroo
         .login(mail, password)
+        .then(response => {
+          console.log(response);
+          return response;
+        })
         .then(response => deliveroo.getHistory(response.user.id))
         .then(response => response.orders[0])
         .then(latestOrder => latestOrder.consumer_status)
@@ -96,7 +108,7 @@ module.exports = {
             this.setEmail(null);
           } else {
             setTimeout(
-              function() {
+              function () {
                 this.trackOrder(mail, password);
               }.bind(this),
               120000
